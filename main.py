@@ -257,7 +257,7 @@ webサイトは[こちらです]()
 async def mute(ctx,user:discord.Member,reason,time):
   if not user:
     await ctx.send("userが選択されてないです\n```sfp!mute discord#1234 spam 100```")
-   if not reason:
+  if not reason:
     role = get(message.guild.roles, name="zearamute")
     await user.add_roles(role)
     await asyncio.sleep(time)
@@ -275,7 +275,7 @@ async def mute(ctx,user:discord.Member,reason,time):
 async def unmute(ctx,user:discord.Member,reason):
   if not user:
     await ctx.send("userが選択されてないです\n```sfp!unmute discord#1234 時間が来たから```")
-   if not reason:
+  if not reason:
     role = get(message.guild.roles, name="zearamute")
     await user.remove_roles(role,reason="時間が来たから")
   role = get(message.guild.roles, name="zearamute")
