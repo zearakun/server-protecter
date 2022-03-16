@@ -1,0 +1,6 @@
+py-cord
+Flask
+discord
+discord-buttons-plugin
+dislash.py
+jishaku
