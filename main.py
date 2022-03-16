@@ -449,7 +449,7 @@ async def badword(message):
 async def help(ctx,*, command=None):
   if not command:
     embed = discord.Embed(title="コマンド一覧",color=0x979c9f)
-    embed.add_field(name="詳細",value=f"```{prefix}help <cmd>で詳しくコマンドの説明を見れます\nチャンネルのトピックに<のーせきゅりてぃ>と入力するとセキュリティを無くせます👍```")
+    embed.add_field(name="詳細",value=f"```{prefix}help <cmd>で詳しくコマンドの説明を見れます\nチャンネルのトピックに<のーぷろてくと>と入力するとセキュリティを無くせます👍```")
     embed.add_field(name="一般",value="```none```",inline=False)
     embed.add_field(name="security",value="```kick,ban,mute,unmute,clear```",inline=False)
     embed.add_field(name="owner",value="```gban gunban eval jsk```",inline=False)
@@ -503,7 +503,7 @@ async def help(ctx,*, command=None):
 async def help(ctx,*, args=None):
   if not args:
     embed = discord.Embed(title="コマンド一覧",color=0x979c9f)
-    embed.add_field(name="詳細",value=f"```{prefix}help <cmd>で詳しくコマンドの説明を見れます\nチャンネルのトピックに<のーせきゅりてぃ>と入力するとセキュリティを無くせます👍```")
+    embed.add_field(name="詳細",value=f"```{prefix}help <cmd>で詳しくコマンドの説明を見れます\nチャンネルのトピックに<のーぷろてくと>と入力するとセキュリティを無くせます👍```")
     embed.add_field(name="一般",value="```none```",inline=False)
     embed.add_field(name="security",value="```kick,ban,mute,unmute,clear```",inline=False)
     embed.add_field(name="owner",value="```gban gunban eval jsk```",inline=False)
