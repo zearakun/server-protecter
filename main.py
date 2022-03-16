@@ -304,6 +304,16 @@ async def ban(ctx, user: discord.User, *, reason=None):
     embed.timestamp = datetime.datetime.utcnow()
     await user.ban(reason=reason)
     await ctx.send(embed=embed)
+@client.command()
+@commands.has_permissions(manage_roles=True, ban_members=True)
+async def unban(ctx, user: discord.User, *, reason=None):
+    embed = discord.Embed(color=0x979c9f)
+    embed.add_field(name="ban",
+                    value=f"{ctx.author}がbanしました\n名前: {user.name}",
+                    inline=False)
+    embed.timestamp = datetime.datetime.utcnow()
+    await user.unban(reason=reason)
+    await ctx.send(embed=embed)
 ###################################################################################
   
                             #owner#
@@ -439,51 +449,47 @@ async def badword(message):
 async def help(ctx,*, command=None):
   if not command:
     embed = discord.Embed(title="コマンド一覧",color=0x979c9f)
-    embed.add_field(name="詳細",value="```sc!help <cmd>で詳しくコマンドの説明を見れます\nチャンネルのトピックに<のーせきゅりてぃ>と入力するとセキュリティを無くせます👍```")
-    embed.add_field(name="一般",value="```wiki join leave stop```",inline=False)
-    embed.add_field(name="security",value="```kick,ban```",inline=False)
+    embed.add_field(name="詳細",value=f"```{prefix}help <cmd>で詳しくコマンドの説明を見れます\nチャンネルのトピックに<のーせきゅりてぃ>と入力するとセキュリティを無くせます👍```")
+    embed.add_field(name="一般",value="```none```",inline=False)
+    embed.add_field(name="security",value="```kick,ban,mute,unmute,clear```",inline=False)
     embed.add_field(name="owner",value="```gban gunban eval jsk```",inline=False)
     embed.add_field(name="message manage", value="```10秒間に5回メッセージを送信するとメッセージが削除されます\nngwordを送ると消されます```", inline=False)
     await ctx.send(embed=embed)
   if command == "kick":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="kickコマンド",value="```sc!#kick <user#1234> <reason>```",inline=False)
+    embed.add_field(name="kickコマンド",value=f"```{prefix}kick <user#1234> <reason>```",inline=False)
     await ctx.send(embed=embed)
   if command == "ban":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="banコマンド",value="```sc!ban <user#1234> <reason>```",inline=False)
+    embed.add_field(name="banコマンド",value=f"```{prefix}ban <user#1234> <reason>```",inline=False)
     await ctx.send(embed=embed)
-  if command == "wiki":
+  if command == "unban":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="wikiコマンド",value="```sc!wiki <word>```",inline=False)
+    embed.add_field(name="unbanコマンド",value=f"```{prefix}unban <user#1234> <reason>```",inline=False)
     await ctx.send(embed=embed)
-  if command == "join":
+  if command == "mute":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="joinコマンド",value="```sc!join```",inline=False)
+    embed.add_field(name="muteコマンド",value=f"```{prefix}mute <user#1234> <reason>```",inline=False)
     await ctx.send(embed=embed)
-  if command == "leave":
+  if command == "unmute":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="leaveコマンド",value="```sc!leave```",inline=False)
-    await ctx.send(embed=embed)
-  if command == "stop":
-    embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="コマンド",value="```sc!stop```",inline=False)
+    embed.add_field(name="unmuteコマンド",value=f"```{prefix}unmute <user#1234> <reason>```",inline=False)
     await ctx.send(embed=embed)
   if command == "gban":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="gbanコマンド",value="```sc!gban <user> <reason>```",inline=False)
+    embed.add_field(name="gbanコマンド",value=f"```{prefix}gban <user> <reason>```",inline=False)
     await ctx.send(embed=embed)
   if command == "gunban":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="gunbanコマンド",value="```sc!gunban <user> <reason>```",inline=False)
+    embed.add_field(name="gunbanコマンド",value=f"```{prefix}gunban <user> <reason>```",inline=False)
     await ctx.send(embed=embed)
   if command == "eval":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="evalコマンド",value="```sc!eval <code>```",inline=False)
+    embed.add_field(name="evalコマンド",value=f"```{prefix}eval <code>```",inline=False)
     await ctx.send(embed=embed)
   if command == "jsk":
     embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="jskコマンド",value="```sc!jsk <code>```",inline=False)
+    embed.add_field(name="jskコマンド",value=f"```{prefix}jsk <code>```",inline=False)
     await ctx.send(embed=embed)
 
   
@@ -510,10 +516,6 @@ async def help(ctx,*, args=None):
   if args == "ban":
     embed = discord.Embed(color=0x979c9f)
     embed.add_field(name="banコマンド",value="```sc!ban <user#1234> <reason>```",inline=False)
-    await ctx.send(embed=embed)
-  if args == "wiki":
-    embed = discord.Embed(color=0x979c9f)
-    embed.add_field(name="wikiコマンド",value="```sc!wiki <word>```",inline=False)
     await ctx.send(embed=embed)
   if args == "gban":
     embed = discord.Embed(color=0x979c9f)
