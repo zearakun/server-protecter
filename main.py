@@ -14,8 +14,6 @@ from discord import Permissions
 from discord.utils import get
 from dislash import slash_commands, Option, OptionType
 import datetime
-import json
-import random
 from config.server import keep_alive
 
 intents = discord.Intents.default()
