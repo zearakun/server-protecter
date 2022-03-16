@@ -1,0 +1,1 @@
+zearaserverprotect: python main.py
