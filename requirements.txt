@@ -1,6 +1,10 @@
-py-cord
+py-cord[voice]
 Flask
 discord
 discord-buttons-plugin
 dislash.py
 jishaku
+wikipedia
+gTTS
+captcha
+ffmpeg
